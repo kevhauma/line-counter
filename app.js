@@ -2,7 +2,9 @@ let fs = require("fs")
 
 let {ext,ignore} = getOptions(process.argv)
 let folder = process.argv[2]
-ext = ext || "js,scss,html,txt,bat,json,md,css"
+
+ext = ext || "js,css,html,cs,py"
+ignore = ignore || "node_modules,.git"
 
 let extRegEx = new RegExp(`(\\.${ext.split(",").join("|\\.")})$`)
 let ignoreRegEx = new RegExp(`(${ignore.split(",").join("|")})$`)
