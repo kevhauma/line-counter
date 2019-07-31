@@ -1,0 +1,11 @@
+{
+  "name": "linecounter",
+  "version": "1.0.0",
+  "description": "small script, counting the lines in files in folder",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "me",
+  "license": "ISC"
+}
