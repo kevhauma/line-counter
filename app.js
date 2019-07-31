@@ -1,14 +1,13 @@
 let fs = require("fs")
 
-let {ext,ignore} = getOptions(process.argv)
+let {ext,ignore} = getOptions(process.argv.join(" "))
 let folder = process.argv[2]
 
 ext = ext || "js,css,html,cs,py"
 ignore = ignore || "node_modules,.git"
 
-let extRegEx = new RegExp(`(\\.${ext.split(",").join("|\\.")})$`)
-let ignoreRegEx = new RegExp(`(${ignore.split(",").join("|")})$`)
-
+let extRegEx = new RegExp(`(\\.${ext.split(",").map(x=>x.trim()).join("|\\.")})$`)
+let ignoreRegEx = new RegExp(`(${ignore.split(",").map(x=>x.trim()).join("|")})$`)
 
 if (!folder) {
     throw "please give a folder"
@@ -71,16 +70,15 @@ function readFile(f) {
     })
 }
 
-
-
 function getOptions(string){
-    let optionStringArray = string.join(" ").split("-")
+    let optionStringArray = string.split("-")
     optionStringArray.shift()
     
     ob = {}
     optionStringArray.forEach(s=>{
         let parts = s.split(" ")
-        ob[parts[0]] = parts[1]
+        let name = parts.shift()
+        ob[name] = parts.join(" ")
     })
     return ob
 }

@@ -14,6 +14,6 @@ default: js,css,html,cs,py
 
 --
 
--ignore: folders you want to ignore (does not support spaces in folders...yet)
+-ignore: folders you want to ignore
 
 default: node_modules,.git
